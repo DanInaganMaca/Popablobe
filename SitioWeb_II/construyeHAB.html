@@ -110,38 +110,38 @@ Como el globo asciende se debe supervisar su altitud,lo hacemos basandonos en el
 				<p>
 
 
-					k=0.46235;
-					r0=0.42;  %radio inicial
-					n0=101300*4*pi*r0^3/(3*8.3143*303); %moles iniciales de gas
-					b=16*pi*k*r0^2/(3*n0);
-					y0=49000;
-					eta=0.0289*9.8*y0/(8.3143*303);
-					n=45; %número de moles
-					a=n/n0;
-					M=1.12;  %masa del globo
-					c=M/(0.0289*n0);
-					f=@(x) x^3+(c-a)*x^2/b-1;
-					lambda=sqrt(fzero(f,1.5));
-					%altura de equilibrio
-					yMax=y0-((b+a*lambda^4-b*lambda^6)/lambda^7)^(1/(eta-1))*y0;
-					fprintf('Altura máxima %4.1f\n',yMax);
+					k=0.46235; <br>
+					r0=0.42;  %radio inicial <br>
+					n0=101300*4*pi*r0^3/(3*8.3143*303); %moles iniciales de gas<br>
+					b=16*pi*k*r0^2/(3*n0);<br>
+					y0=49000;<br>
+					eta=0.0289*9.8*y0/(8.3143*303);<br>
+					n=45; %número de moles<br>
+					a=n/n0;<br>
+					M=1.12;  %masa del globo<br>
+					c=M/(0.0289*n0);<br>
+					f=@(x) x^3+(c-a)*x^2/b-1; <br>
+					lambda=sqrt(fzero(f,1.5));<br>
+					%altura de equilibrio<br>
+					yMax=y0-((b+a*lambda^4-b*lambda^6)/lambda^7)^(1/(eta-1))*y0;<br>
+					fprintf('Altura máxima %4.1f\n',yMax);<br>
 
-					%velocidad con la que asciende el globo
-					h=zeros(1,100);
-					v=zeros(1,100);
-					i=1;
-					for y=0:yMax/100:yMax
-					    h(i)=y;
-					    fp=@(x) (1-y/y0)^(eta-1)*x^7+b*x^6-a*x^4-b;
-					    lambda=fzero(fp,1.5);
-					    v(i)=sqrt((20*9.8*r0/3)*(lambda-c*(1-y/y0)^(1-eta)/lambda^2));
-					    i=i+1;
-					end
-					plot(h/1000,v)
-					grid on
-					xlabel('x (km)')
-					ylabel('v (m/s)')
-					title('Un globo que asciende')
+					%velocidad con la que asciende el globo<br>
+					h=zeros(1,100);<br>
+					v=zeros(1,100);<br>
+					i=1;<br>
+					for y=0:yMax/100:yMax<br>
+					    h(i)=y;<br>
+					    fp=@(x) (1-y/y0)^(eta-1)*x^7+b*x^6-a*x^4-b;<br>
+					    lambda=fzero(fp,1.5);<br>
+					    v(i)=sqrt((20*9.8*r0/3)*(lambda-c*(1-y/y0)^(1-eta)/lambda^2));<br>
+					    i=i+1;<br>
+					end<br>
+					plot(h/1000,v)<br>
+					grid on<br>
+					xlabel('x (km)')<br>
+					ylabel('v (m/s)')<br>
+					title('Un globo que asciende')<br>
 
 
 
